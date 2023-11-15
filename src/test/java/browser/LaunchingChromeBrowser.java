@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
 public class LaunchingChromeBrowser {
-   @Test
+   @Test(groups = {"smoke"})
     public void testLaunchingAmazon() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.amazon.de/");

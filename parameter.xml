@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <parameter name="browserLaunch" value="edge"/>
+    <parameter name="userId" value="Deepthi"/>
+    <parameter name="passWord" value="123456"/>
+    <test verbose="2" preserve-order="true" name="C:/Users/rames/SeleniumTraining">
+        <classes>
+            <class name="browser.parameterizationTest">
+                <methods>
+                    <include name="launchBrowserTest2"/>
+                </methods>
+            </class>
+            <class name="browser.ClickAndTextElements">
+                <methods>
+                    <include name="testValidateLoginScenario"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>

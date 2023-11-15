@@ -4,12 +4,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class ClickAndTextElements {
-    @Test
-    public void testValidateLoginScenario() throws InterruptedException {
 
+public class ClickAndTextElements {
+    @Parameters({"browserLaunch"})
+    @Test(groups = {"smoke"})
+    public void testValidateLoginScenario() throws InterruptedException {
         String username = "standard_user";
         String pwd = "secret_sauce";
 
@@ -70,8 +72,32 @@ public class ClickAndTextElements {
             clickContinue.click();
 WebElement finishButton = driver.findElement(By.id("finish"));
 finishButton.click();
-
+By completeHeaderL =  By.xpath("//h2[@class='complete-header']");
+WebElement completeHeader = driver.findElement(completeHeaderL);
+String Text = completeHeader.getText();
+Assert.assertEquals(Text,"Thank you for your order!");
+        System.out.println(Text);
         }
+    @Test
+        public void testDynamicalLoading()
+    {
+
+        WebDriver driver=new ChromeDriver();
+        driver.get("https://the-internet.herokuapp.com/");
+        driver.manage().window().maximize();
+        By dynamicLoadingL = By.xpath("//a[@href='/dynamic_loading']");
+        WebElement dynamicLoading = driver.findElement(dynamicLoadingL);
+        dynamicLoading.click();
+        By firstDynamicLoadingL = By.xpath("//a[@href='/dynamic_loading/1']");
+        WebElement firstDynamicLoading = driver.findElement(firstDynamicLoadingL);
+        firstDynamicLoading.click();
+        By startButtonClickL = By.xpath("//button['text=Start']");
+        WebElement startButtonClick = driver.findElement(startButtonClickL);
+        startButtonClick.click();
+
+        Assert.assertEquals(startButtonClick,"Hello World!\n");
+
+    }
 
     }
 
